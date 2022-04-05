@@ -1,0 +1,5 @@
+#!/bin/bash
+brew update && brew tap homebrew/cask-versions && 
+brew install java &&
+brew install gradle
+

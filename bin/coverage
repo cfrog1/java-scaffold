@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gradle test &&
+gradle jacocoTestReport &&
+open ./build/reports/jacoco/test/html/index.html
