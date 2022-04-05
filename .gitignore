@@ -1,0 +1,10 @@
+out/
+build/
+gradle/
+.gradle
+.idea
+*.iml
+gradlew
+gradlew.*
+.classpath
+.project
