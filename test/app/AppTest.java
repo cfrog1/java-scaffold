@@ -41,4 +41,26 @@ class AppTest {
     assertEquals(result, "wow dude...");
 
   }
+
+  @Test
+  public void canCalculateScore() {
+    Scorer scorer = new Scorer();
+
+    Score result = scorer.score("1234", "1234");
+
+    assertEquals(result, new Score(4, 0));
+
+    result = scorer.score("0000", "1234");
+
+    assertEquals(result, new Score(0, 0));
+
+    result = scorer.score("2122", "1234");
+
+    assertEquals(result, new Score(0, 2));
+
+    result = scorer.score("1240", "1234");
+
+    assertEquals(result, new Score(2, 1));
+  }
+
 }
