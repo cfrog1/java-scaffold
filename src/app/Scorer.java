@@ -26,7 +26,10 @@ public class Scorer {
     }
 
     return score;
+  }
 
+  public boolean isCorrect(String guess, String code) {
+    return guess.equals(code);
   }
 
 }
