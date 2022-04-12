@@ -23,4 +23,10 @@ public class Display {
     return output;
   }
 
+  public String displayWelcome() {
+    String output = "Guess the 4 digit code and win $1million";
+    System.out.println(output);
+    return output;
+  }
+
 }
