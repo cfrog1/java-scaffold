@@ -25,7 +25,7 @@ public class Game {
 
     while (tries < 20) {
       tries++;
-      String guess = input.getInput();
+      String guess = input.getInput(tries);
       Score score = scorer.score(guess, code);
       if (score.bulls() == 4) {
         display.displayWin(tries);

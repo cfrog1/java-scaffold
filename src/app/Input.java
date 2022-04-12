@@ -12,8 +12,8 @@ public class Input {
     this.scanner = new Scanner(System.in);
   }
 
-  public String getInput() {
-    System.out.print("Your guess: ");
+  public String getInput(int tries) {
+    System.out.print(String.format("Guess %s: ", tries));
     String input = "";
 
     while (input == "") {
