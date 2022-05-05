@@ -6,7 +6,7 @@ public class Display {
   }
 
   public String displayScore(Score score) {
-    String output = String.format("Cows: %s, Bulls: %s", score.cows(), score.bulls());
+    String output = String.format("Cows: %s, Bulls: %s", score.cows, score.bulls);
     System.out.println(output);
     return output;
   }
