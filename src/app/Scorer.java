@@ -6,26 +6,26 @@ public class Scorer {
   };
 
   public Score score(String guess, String code) {
-    Score score = new Score(0, 0);
+    int cows = 0, bulls = 0;
     char[] guessArr = guess.toCharArray();
     char[] codeArr = code.toCharArray();
 
     for (int i = 0; i < codeArr.length; i++) {
       if (codeArr[i] == guessArr[i]) {
-        score.setBulls(score.bulls() + 1);
+        bulls++;
         codeArr[i] = '#';
         continue;
       }
       for (int j = 0; j < guessArr.length; j++) {
         if (codeArr[i] == guessArr[j]) {
-          score.setCows(score.cows() + 1);
+          cows++;
           codeArr[i] = '#';
           continue;
         }
       }
     }
 
-    return score;
+    return new Score(bulls, cows);
   }
 
   public boolean isCorrect(String guess, String code) {
