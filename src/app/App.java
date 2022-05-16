@@ -3,7 +3,8 @@ package app;
 public class App {
 
 	public String run() {
-		Game game = new Game();
+		CodeGenerator codeGenerator = new TestCodeGenerator();
+		Game game = new Game(codeGenerator);
 		game.start();
 		return null;
 	}

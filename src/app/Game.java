@@ -1,21 +1,19 @@
 package app;
 
-import java.util.Random;
-
 public class Game {
   private int tries;
   private Scorer scorer;
   private Display display;
-  private String code;
+  private Code secret;
   private Input input;
 
-  public Game() {
+  public Game(CodeGenerator codeGenerator) {
     this.tries = 0;
     this.scorer = new Scorer();
     this.display = new Display();
     // Random random = new Random();
     // this.code = String.format("%04d", random.nextInt(10000));
-    this.code = "1234";
+    this.secret = codeGenerator.generateCode();
     this.input = new Input();
   }
 
@@ -25,12 +23,12 @@ public class Game {
 
     while (tries < 20) {
       tries++;
-      String guess = input.getInput(tries);
-      if (scorer.isCorrect(guess, code)) {
+      Code guess = input.getInput(tries);
+      if (guess.equals(secret)) {
         display.displayWin(tries);
         return;
       }
-      Score score = scorer.score(guess, code);
+      Score score = scorer.score(guess, secret);
       display.displayScore(score);
     }
     display.displayLoss();
