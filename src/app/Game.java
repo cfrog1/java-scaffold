@@ -14,7 +14,7 @@ public class Game {
     // Random random = new Random();
     // this.code = String.format("%04d", random.nextInt(10000));
     this.secret = codeGenerator.generateCode();
-    this.input = new Input();
+    this.input = new CommandLineInput();
   }
 
   public void start() {
@@ -23,7 +23,17 @@ public class Game {
 
     while (tries < 20) {
       tries++;
-      Code guess = input.getInput(tries);
+      Code guess;
+      while (true) {
+        System.out.println("guess");
+        try {
+          guess = input.getInput();
+          break;
+        } catch (Exception e) {
+          System.out.println(e);
+        }
+
+      }
       if (guess.equals(secret)) {
         display.displayWin(tries);
         return;
