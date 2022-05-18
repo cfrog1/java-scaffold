@@ -25,12 +25,12 @@ public class Game {
       tries++;
       Code guess;
       while (true) {
-        System.out.println("guess");
+        display.displayUserPrompt(tries);
         try {
           guess = input.getInput();
           break;
         } catch (Exception e) {
-          System.out.println(e);
+          display.displayInvalidInput(e.getMessage());
         }
 
       }

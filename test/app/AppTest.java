@@ -1,6 +1,7 @@
 package app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class AppTest {
@@ -43,22 +44,37 @@ class AppTest {
   @Test
   public void canCalculateScore() {
     Scorer scorer = new Scorer();
+    Code guess;
+    Code secret;
+    try {
+      guess = new Code("1234");
+      secret = new Code("1234");
+      Score result = scorer.score(guess, secret);
+      assertEquals(result, new Score(4, 0));
+    } catch (Exception e) {
+    }
 
-    Score result = scorer.score("1234", "1234");
-
-    assertEquals(result, new Score(4, 0));
-
-    result = scorer.score("0000", "1234");
-
-    assertEquals(result, new Score(0, 0));
-
-    result = scorer.score("2122", "1234");
-
-    assertEquals(result, new Score(0, 2));
-
-    result = scorer.score("1240", "1234");
-
-    assertEquals(result, new Score(2, 1));
+    try {
+      guess = new Code("0000");
+      secret = new Code("1234");
+      Score result = scorer.score(guess, secret);
+      assertEquals(result, new Score(0, 0));
+    } catch (Exception e) {
+    }
+    try {
+      guess = new Code("2122");
+      secret = new Code("1234");
+      Score result = scorer.score(guess, secret);
+      assertEquals(result, new Score(0, 2));
+    } catch (Exception e) {
+    }
+    try {
+      guess = new Code("1240");
+      secret = new Code("1234");
+      Score result = scorer.score(guess, secret);
+      assertEquals(result, new Score(2, 1));
+    } catch (Exception e) {
+    }
   }
 
 }

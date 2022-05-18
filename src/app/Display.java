@@ -29,4 +29,15 @@ public class Display {
     return output;
   }
 
+  public String displayUserPrompt(int tries) {
+    String output = String.format("Guess %s:", tries);
+    System.out.println(output);
+    return output;
+  }
+
+  public String displayInvalidInput(String message) {
+    System.out.println(message);
+    return message;
+  }
+
 }

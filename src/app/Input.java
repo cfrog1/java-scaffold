@@ -2,15 +2,17 @@ package app;
 
 import java.util.Scanner;
 
-interface Input {
+public interface Input {
   public Code getInput() throws Exception;
 }
 
 class CommandLineInput implements Input {
+  private Scanner scanner = new Scanner(System.in);
+
+  @Override
   public Code getInput() throws Exception {
-    Scanner scanner = new Scanner(System.in);
     String guess = scanner.nextLine();
-    scanner.close();
     return new Code(guess);
   }
+
 }
