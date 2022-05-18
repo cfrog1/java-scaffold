@@ -4,7 +4,8 @@ public class App {
 
 	public String run() {
 		CodeGenerator codeGenerator = new TestCodeGenerator();
-		Game game = new Game(codeGenerator);
+		Input input = new CommandLineInput();
+		Game game = new Game(codeGenerator, input);
 		game.start();
 		return null;
 	}

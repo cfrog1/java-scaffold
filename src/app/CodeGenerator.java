@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Random;
+
 interface CodeGenerator {
   public Code generateCode();
 }
@@ -15,4 +17,20 @@ class TestCodeGenerator implements CodeGenerator {
     }
 
   }
+}
+
+class RandomCodeGenerator implements CodeGenerator {
+
+  @Override
+  public Code generateCode() {
+    Random random = new Random();
+    String code = String.format("%04d", random.nextInt(10000));
+    try {
+      return new Code(code);
+    } catch (Exception e) {
+      return null;
+    }
+
+  }
+
 }

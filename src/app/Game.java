@@ -7,14 +7,12 @@ public class Game {
   private Code secret;
   private Input input;
 
-  public Game(CodeGenerator codeGenerator) {
+  public Game(CodeGenerator codeGenerator, Input input) {
     this.tries = 0;
     this.scorer = new Scorer();
     this.display = new Display();
-    // Random random = new Random();
-    // this.code = String.format("%04d", random.nextInt(10000));
     this.secret = codeGenerator.generateCode();
-    this.input = new CommandLineInput();
+    this.input = input;
   }
 
   public void start() {
