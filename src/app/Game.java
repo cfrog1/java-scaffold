@@ -3,43 +3,35 @@ package app;
 public class Game {
   private int tries;
   private Scorer scorer;
-  private Display display;
   private Code secret;
-  private Input input;
+  private UserAdapter userAdapter;
 
   public Game(CodeGenerator codeGenerator, Input input) {
     this.tries = 0;
     this.scorer = new Scorer();
-    this.display = new Display();
     this.secret = codeGenerator.generateCode();
-    this.input = input;
+    this.userAdapter = new UserAdapter(input, new Display());
   }
 
   public void start() {
 
-    display.displayWelcome();
+    userAdapter.displayWelcome();
 
     while (tries < 20) {
       tries++;
-      Code guess;
-      while (true) {
-        display.displayUserPrompt(tries);
-        try {
-          guess = input.getInput();
-          break;
-        } catch (Exception e) {
-          display.displayInvalidInput(e.getMessage());
-        }
 
-      }
+      Code guess = userAdapter.getInput(tries);
+
       if (guess.equals(secret)) {
-        display.displayWin(tries);
+        userAdapter.displayWin(tries);
         return;
       }
+
       Score score = scorer.score(guess, secret);
-      display.displayScore(score);
+      userAdapter.displayScore(score);
     }
-    display.displayLoss();
+
+    userAdapter.displayLoss();
 
     return;
   }
