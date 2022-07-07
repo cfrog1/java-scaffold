@@ -3,16 +3,20 @@ package app;
 import java.util.Scanner;
 
 public interface Input {
-  public Code getInput() throws Exception;
+  public String getInput();
 }
 
 class CommandLineInput implements Input {
   private Scanner scanner = new Scanner(System.in);
 
   @Override
-  public Code getInput() throws Exception {
-    String guess = scanner.nextLine();
-    return new Code(guess);
+  public String getInput() {
+    String input = "";
+    try {
+      input = scanner.nextLine();
+    } catch(Exception e) {
+    }
+    return input;
   }
 
 }

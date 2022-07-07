@@ -35,7 +35,8 @@ public class Display {
     return output;
   }
 
-  public String displayInvalidInput(String message) {
+  public String displayInvalidInput() {
+    String message = "Invalid code. Code must consist of 4 numbers";
     System.out.println(message);
     return message;
   }
